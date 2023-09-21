@@ -53,6 +53,7 @@
   color: white;
   justify-content: center;
   align-items: center;
+  margin-left: 5%;
 }
 
 .editarEnfermeiro {
@@ -63,4 +64,7 @@
   background-color: #68FFA6;
   justify-content: center;
   align-items: center;
+}
+
+.enfermeirosBody{ 
 }

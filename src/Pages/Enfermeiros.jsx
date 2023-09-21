@@ -8,6 +8,7 @@ import ColorSchemesExample from '../Components/ColorSchemesExample';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { sessionValidate } from '../services/UserService';
+import ModalPlantoesEnfermeiro from '../EnfermeiroComponents/ModalPlantoesEnfermeiro';
 
 function Enfermeiros() {
   //sessionValidate();
@@ -21,7 +22,7 @@ function Enfermeiros() {
   const [verbo, setverbo] = useState("");
   const [pesquisa, setPesquisa] = useState("");
   const [inputChanges, setInputChanges] = useState(0); // Contador de mudanças no input
-
+  const [modalShow, setModalShow] = useState(false);
   useEffect(() => {
     fetchEnfermeiros();
   }, []);
@@ -50,7 +51,7 @@ function Enfermeiros() {
       const result = await getEnfermeiros();
       setListaEnfermeiros(result.data);
     } catch (error) {
-      console.log(error);
+      console.log(error); 
     }
   }
 
@@ -99,6 +100,8 @@ function Enfermeiros() {
   return (
     <div>
       <ColorSchemesExample />
+      <div className='paginaEnfermeiro'>
+      <div className='enfermeirosBody'>
       <h2>Enfermeiros</h2>
       <div className='listagem'>
         <div className='anexosTabelaEnfermeiro'>
@@ -129,7 +132,7 @@ function Enfermeiros() {
               <th>Nome</th>
               <th>Enfermeiro Técnico</th>
               <th>COREN</th>
-              <th></th>
+              <th>Plantoes</th>
               <th></th>
             </tr>
           </thead>
@@ -139,12 +142,17 @@ function Enfermeiros() {
                 <td>{enfermeiro.nome}</td>
                 <td>{enfermeiro.enfermeiroTecnico}</td>
                 <td>{enfermeiro.coren}</td>
-                <td><button onClick={() => handleShowPut(enfermeiro)} className='editarEnfermeiro'>Editar</button></td>
-                <td><button onClick={() => removerEnfermeiro(enfermeiro.idEnfermeiro)} className='excluirEnfermeiro'><h5>X</h5></button></td>
+                <td>
+                  <button>listar</button>
+                </td>
+                <td><button onClick={() => handleShowPut(enfermeiro)} className='editarEnfermeiro'>Editar</button>
+                <button onClick={() => removerEnfermeiro(enfermeiro.idEnfermeiro)} className='excluirEnfermeiro'><h5>X</h5></button></td>
               </tr>
             ))}
           </tbody>
         </Table>
+      </div>
+      </div>
       </div>
       <ModalEnfermeiro
         show={show}
@@ -155,6 +163,10 @@ function Enfermeiros() {
         nivelEnfermeiro={nivelEnfermeiro}
         idEnfermeiro={idEnfermeiro}
         fetchEnfermeiros={fetchEnfermeiros}
+      />
+      <ModalPlantoesEnfermeiro 
+      show={modalShow}
+      onHide={() => setModalShow(false)}
       />
     </div>
   );
