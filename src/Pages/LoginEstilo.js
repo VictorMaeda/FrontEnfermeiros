@@ -32,7 +32,7 @@ export const Container = styled.div`
   width: 1500px;
   height : 700px;
   max-width: 60%;
-  max-height: 100%;
+  max-height: 80%;
 `;
 
 export const SignUpContainer = styled.div`

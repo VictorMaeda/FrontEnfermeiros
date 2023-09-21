@@ -8,7 +8,7 @@ import ModalPlantao from '../PlantaoComponents/ModalPlantao';
 import { sessionValidate } from '../services/UserService';
 
 const Plantoes = () => {
-  sessionValidate();
+  //sessionValidate();
   const [listaEscalados, setEscalados] = useState([]);
   const [idPlantao, setIdPlantao] = useState(null);
   const [dataHoraPlantao, setDataHoraPlantao] = useState("");

@@ -6,7 +6,7 @@ import { sessionValidate } from '../services/UserService';
 
 
 const DashBoard = () => {
-  
+  //sessionValidate();
   const data = [
     ["Element", "Enfermeiros", { role: "style" }],
     ["18/09", 18, "color : #07b164"],
@@ -18,7 +18,6 @@ const DashBoard = () => {
     ["24/09", 20, "color : #00ff00"],
   ];
 
-      sessionValidate();
 
   return (
     <div>

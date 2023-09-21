@@ -17,7 +17,7 @@ export async function loginService(email, senha) {
     });
 
     sessionStorage.setItem('token', JSON.stringify(response.data));
-    return response.data; // Retorna o token para indicar sucesso
+    return response.data;
   } catch (error) {
     throw error;
   }
