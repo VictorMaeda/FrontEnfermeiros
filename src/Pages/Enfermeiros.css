@@ -1,0 +1,66 @@
+.listagem {
+  text-align: center;
+}
+
+/* Escalados.css */
+
+.EnfermeirosTable {
+  width: 80%;
+  border-collapse: collapse;
+  margin: 0 auto; /* Centraliza a tabela horizontalmente */
+}
+
+.EnfermeirosTable th,
+.EnfermeirosTable td {
+  text-align: center;
+  padding: 8px; /* Ajuste o espaçamento interno conforme necessário */
+}
+
+.EnfermeirosTable th {
+  border-bottom: 1px solid #000000; /* Reduz o tamanho da borda inferior */
+}
+
+.anexosTabelaEnfermeiro {
+  margin: 20px 0; /* Margem entre elementos acima e abaixo, removendo a margem superior e inferior */
+  display: flex;
+  align-items: center; /* Centraliza verticalmente */
+  margin-left: 10%;
+}
+
+.barraPesquisa {
+  width: 60%;
+  height: 40px;
+}
+
+.limparPesquisaBtn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.adicionarEnfermeiro{
+  margin-right: 11.5%;
+}
+.excluirEnfermeiro {
+  width: 30px;
+  height: 28px;
+  border-radius: 10px;
+  border: none;
+  background-color: red;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.editarEnfermeiro {
+  width: 80px;
+  height: 30px;
+  border-radius: 8px;
+  border: none;
+  background-color: #68FFA6;
+  justify-content: center;
+  align-items: center;
+}
