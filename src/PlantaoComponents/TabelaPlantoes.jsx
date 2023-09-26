@@ -39,7 +39,15 @@ const TabelaPlantoes = ({ buscarEscalados }) => {
           </tr>
         </thead>
         <tbody>
+          <td><select name="" id="">
+            <option value="0:00">0:00</option>
+            <option value="8:00">8:00</option>
+            <option value="16:00">16:00</option>
+            </select></td>
+          <td><input type="text" /></td>
+          <td><input /></td>
           {listaPlantoes.map((plantao) => (
+            
             <tr
               key={plantao.idPlantao}
               className={`plantaoModel ${sessionStorage.getItem("plantaoExibido") === plantao.idPlantao.toString() ? 'plantaoSelecionado' : ''}`}
@@ -47,7 +55,6 @@ const TabelaPlantoes = ({ buscarEscalados }) => {
               <td>{plantao.horario}</td>
               <td>{plantao.dia}</td>
               <td>
-                {/* <button onClick={() => selecionarPlantao(plantao)}>Listar</button> */}
                 <Button onClick={() => selecionarPlantao(plantao)} variant="info">Listar</Button>
               </td>
             </tr>

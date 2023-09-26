@@ -141,19 +141,22 @@ function Login() {
           <Components.OverlayContainer signingIn={signIn}>
             <Components.Overlay signingIn={signIn}>
               <Components.LeftOverlayPanel signingIn={signIn}>
-                <Components.Title>Já tem conta?</Components.Title>
-                <Components.Paragraph>
+                <Components.Title className="text-dark">Já tem conta?</Components.Title>
+                <Components.Paragraph className="text-dark">
                   Entre com sua Conta, Faça Login
                 </Components.Paragraph>
                 <Components.GhostButton onClick={() => irLogin()}>
                   Entrar</Components.GhostButton>
               </Components.LeftOverlayPanel>
               <Components.RightOverlayPanel signingIn={signIn}>
-                <Components.Title>Olá, Amigo!</Components.Title>
-                <Components.Paragraph>
-                  Insira seus dados pessoais e comece sua jornada conosco
+                <Components.Title className="text-dark">Bem vindo!!!</Components.Title>
+                <Components.Paragraph className="text-dark">
+                  Comece sua jornada conosco
                 </Components.Paragraph>
-                <Components.GhostButton onClick={() => irCadastrar()}>
+                <Components.GhostButton
+                    onClick={() => irCadastrar()}
+                    className="text-dark btn-lg"
+                  >
                   Cadastrar
                 </Components.GhostButton>
               </Components.RightOverlayPanel>

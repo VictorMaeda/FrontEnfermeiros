@@ -44,6 +44,7 @@ const Plantoes = () => {
         <div className='row'>
           <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 mb-3'>
             {/* Passe a função buscarEscalados como uma propriedade */}
+            <h3>Plantões</h3>
             <TabelaPlantoes buscarEscalados={buscarEscalados} setDataHoraPlantao={setDataHoraPlantao} />
           </div>
           <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 mb-3'>

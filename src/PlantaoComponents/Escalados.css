@@ -3,7 +3,7 @@ body{
     align-items: center;
 }
 .rectangle {
-    width: 100%; /* Largura do retângulo */
+    width: 60%; /* Largura do retângulo */
     height: 100%; /* Altura do retângulo */
     background-color: #68FFA6; /* Cor de fundo do retângulo */
     margin-left: auto; /* Alinha o retângulo à direita */

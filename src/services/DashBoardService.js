@@ -1,21 +1,13 @@
 import { api } from "./api";
 
-export async function get(){
-    const accessToken = sessionStorage.getItem('token');
-    const result = await api.get('/enfermeiro/listar');
-    return result;
+
+
+export async function findMesData(dia){
+   return await api.get(`/plantao/DashBoard/BarsData/mes/${dia}`);
 }
-
-export async function cadastrarEnfermei(objeto){
-   return await api.post('/enfermeiro/cadastrar', objeto);
+export async function findSemanaData(dia){
+    return await api.get(`/plantao/DashBoard/BarsData/semana/2023-09-01`);
 }
-export async function atualizar(id, objeto){
-    return await api.put(`/enfermeiro/atualizar/${id}`, objeto);
-}
-
-
-
-
-export async function sessionValidate() {
-  
+export async function findPizzaData(){
+    return await api.get(`/enfermeiro/DashBoard/PizzaData`);
 }
