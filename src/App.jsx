@@ -12,7 +12,6 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-        <Route path='/aaa' element={<Login />} />
           <Route path='/' element={<Login />} />
           <Route path='/Plantoes' element={<Plantoes />} />
           <Route path='/Enfermeiros' element={<Enfermeiros />} />
