@@ -44,16 +44,8 @@
 .adicionarEnfermeiro{
   margin-right: 11.5%;
 }
-.excluirEnfermeiro {
-  width: 30px;
-  height: 28px;
-  border-radius: 10px;
+/* .excluirEnfermeiro {
   border: none;
-  background-color: red;
-  color: white;
-  justify-content: center;
-  align-items: center;
-  margin-left: 5%;
 }
 
 .editarEnfermeiro {
@@ -67,4 +59,4 @@
 }
 
 .enfermeirosBody{ 
-}
+} */

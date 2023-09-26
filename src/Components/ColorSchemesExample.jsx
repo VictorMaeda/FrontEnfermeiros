@@ -5,9 +5,10 @@ import Navbar from 'react-bootstrap/Navbar';
 import "bootstrap/dist/css/bootstrap.css";
 import { Outlet, useNavigate } from 'react-router-dom'; // Importe useNavigate do react-router-dom
 import './NavBar.css';
+import { SignOut } from '@phosphor-icons/react';
 
 const customNavbarStyle = {
-  backgroundColor: '#68FFA6',
+  backgroundColor: '#68FFA6'
 };
 
 const customLinkStyle = {
@@ -26,31 +27,26 @@ function ColorSchemesExample() {
 
   return (
     <>
-      <Navbar style={customNavbarStyle} variant="dark">
+      <Navbar expand="lg" style={customNavbarStyle} variant="dark">
         <Container>
           <Navbar.Brand>
-          <img
+            <img
               src="\SpringMed.png"
-              width="193.2" // Corrija a vírgula para um ponto
-              height="54"
-              className="d-inline-block align-top"
+              className="logo"
               alt="Logo"
             />
           </Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link style={customLinkStyle} href="/Plantoes">Plantoes</Nav.Link>
-            <Nav.Link style={customLinkStyle} href="/Enfermeiros">Enfermeiros</Nav.Link>
-            <Nav.Link style={customLinkStyle} href="/DashBoard">DashBoard</Nav.Link>
-          </Nav>
-          <button onClick={() => sair(navigate)} className='botaoSair'>
-            <img
-              src="\Saida.png"
-              width="35"
-              height="35"
-              className="d-inline-block align-top"
-              alt="Logo"
-            />
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link className='text-dark fs-5' href="/Plantoes">Plantoes</Nav.Link>
+              <Nav.Link className='text-dark fs-5' href="/Enfermeiros">Enfermeiros</Nav.Link>
+              <Nav.Link className='text-dark fs-5' href="/DashBoard">DashBoard</Nav.Link>
+            </Nav>
+            <button onClick={() => sair(navigate)} className='botaoSair'>
+              <SignOut size={28} />
             </button>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
       <br />

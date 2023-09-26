@@ -1,7 +1,7 @@
 /* ModalEnfermeiro.css */
 .EnfermeiroCustomModal {
-  width: 800px;
-  margin: 80px auto 0; /* Posicione o modal mais para baixo definindo uma margem superior de 80px */
+  width: 100%;
+  margin: 5% auto 0; /* Posicione o modal mais para baixo definindo uma margem superior de 80px */
 }
 
 .custom-button {
@@ -53,7 +53,7 @@ select {
 /* Ajuste o tamanho do modal-content */
 .EnfermeiroCustomModal .modal-content {
   height: 600px; /* Altura fixa de 600 pixels para o modal-content */
-  width: 600px;
+  width: 100%;
 }
 
 /* Estilo para o alerta */

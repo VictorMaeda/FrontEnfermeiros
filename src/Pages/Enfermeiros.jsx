@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { sessionValidate } from '../services/UserService';
 import ModalPlantoesEnfermeiro from '../EnfermeiroComponents/ModalPlantoesEnfermeiro';
+import { Pen, TrashSimple } from '@phosphor-icons/react';
 
 function Enfermeiros() {
   //sessionValidate();
@@ -44,20 +45,20 @@ function Enfermeiros() {
     setverbo("Edição");
     setShow(true);
   }
-  
+
   async function fetchEnfermeiros() {
     try {
       console.log("Requisição feita");
       const result = await getEnfermeiros();
       setListaEnfermeiros(result.data);
     } catch (error) {
-      console.log(error); 
+      console.log(error);
     }
   }
 
   async function removerEnfermeiro(id) {
     const excluir = confirm("Deseja deletar o enfermeiro?");
-    if(excluir){
+    if (excluir) {
       try {
         const result = await deletarEnfermeiro(id);
         setListaEnfermeiros(result.data);
@@ -65,8 +66,8 @@ function Enfermeiros() {
         console.log(error);
       }
     }
-    }
-   
+  }
+
 
   const limparPesquisa = () => {
     setPesquisa("");
@@ -86,7 +87,7 @@ function Enfermeiros() {
           if (pesquisa.length > 1) {
             const result = await pesquisarEnfermeiros(pesquisa);
             setListaEnfermeiros(result.data);
-          }else{
+          } else {
             fetchEnfermeiros();
           }
         } catch (error) {
@@ -98,62 +99,70 @@ function Enfermeiros() {
   }, [inputChanges, pesquisa]);
 
   return (
-    <div>
+    <>
       <ColorSchemesExample />
-      <div className='paginaEnfermeiro'>
-      <div className='enfermeirosBody'>
-      <h2>Enfermeiros</h2>
-      <div className='listagem'>
-        <div className='anexosTabelaEnfermeiro'>
-          <div className='input-group'>
-            <input
-              type="text"
-              className='barraPesquisa'
-              placeholder="Pesquisar..."
-              value={pesquisa}
-              onChange={handleChange}
-            />
-            {pesquisa && (
-              <button
-                className="limparPesquisaBtn"
-                onClick={limparPesquisa}
-              >
-                <FontAwesomeIcon icon={faTimes} />
-              </button>
-            )}
+      <div className='container'>
+        <div className='row'>
+          <div className='col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mb-3'>
+            <h2>Enfermeiros</h2>
           </div>
-          <Button variant="primary" onClick={handleShowPost} className='adicionarEnfermeiro'>
-            Adicionar
-          </Button>
+          <div className='col-sm-8 col-md-8 col-lg-6 col-xl-6 col-xxl-6 mb-3'>
+            <div className='d-flex align-items-center'>
+              <input
+                type="text"
+                className='barraPesquisa w-100 me-2'
+                placeholder="Pesquisar..."
+                value={pesquisa}
+                onChange={handleChange}
+              />
+              {pesquisa && (
+                <button
+                  className="limparPesquisaBtn"
+                  onClick={limparPesquisa}
+                >
+                  <FontAwesomeIcon icon={faTimes} />
+                </button>
+              )}
+            </div>
+          </div>
+          <div className='col-sm-4 col-md-4 col-lg-6 col-xl-6 col-xxl-6 mb-3 text-end'>
+            <Button variant="primary" onClick={handleShowPost}>
+              Adicionar
+            </Button>
+          </div>
+          <div className='col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mb-3'>
+            <Table striped bordered hover responsive className='EnfermeirosTable w-100'>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Enfermeiro Técnico</th>
+                  <th>COREN</th>
+                  <th>Plantoes</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {listaEnfermeiros && listaEnfermeiros.map((enfermeiro) => (
+                  <tr key={enfermeiro.idEnfermeiro}>
+                    <td>{enfermeiro.nome}</td>
+                    <td>{enfermeiro.enfermeiroTecnico}</td>
+                    <td>{enfermeiro.coren}</td>
+                    <td>
+                      <button className='btn btn-info'>listar</button>
+                    </td>
+                    <td><button onClick={() => handleShowPut(enfermeiro)} className='border-0 bg-transparent'>
+                      <Pen size={22} />
+                    </button>
+                      <button onClick={() => removerEnfermeiro(enfermeiro.idEnfermeiro)} className='border-0 bg-transparent'>
+                        <TrashSimple size={22} color='red' /></button></td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </div>
         </div>
-        <Table striped bordered hover responsive className='EnfermeirosTable'>
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Enfermeiro Técnico</th>
-              <th>COREN</th>
-              <th>Plantoes</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {listaEnfermeiros && listaEnfermeiros.map((enfermeiro) => (
-              <tr key={enfermeiro.idEnfermeiro}>
-                <td>{enfermeiro.nome}</td>
-                <td>{enfermeiro.enfermeiroTecnico}</td>
-                <td>{enfermeiro.coren}</td>
-                <td>
-                  <button>listar</button>
-                </td>
-                <td><button onClick={() => handleShowPut(enfermeiro)} className='editarEnfermeiro'>Editar</button>
-                <button onClick={() => removerEnfermeiro(enfermeiro.idEnfermeiro)} className='excluirEnfermeiro'><h5>X</h5></button></td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
       </div>
-      </div>
-      </div>
+      
       <ModalEnfermeiro
         show={show}
         handleClose={handleClose}
@@ -164,11 +173,11 @@ function Enfermeiros() {
         idEnfermeiro={idEnfermeiro}
         fetchEnfermeiros={fetchEnfermeiros}
       />
-      <ModalPlantoesEnfermeiro 
-      show={modalShow}
-      onHide={() => setModalShow(false)}
+      <ModalPlantoesEnfermeiro
+        show={modalShow}
+        onHide={() => setModalShow(false)}
       />
-    </div>
+    </>
   );
 }
 

@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import './TabelaPlantoes.css';
 import { getPlantoes } from '../services/PlantaoService';
+import { Button } from 'react-bootstrap';
 
 const TabelaPlantoes = ({ buscarEscalados }) => {
   const [listaPlantoes, setPlantoes] = useState([]);
   const [plantaoSelecionado, setPlantaoSelecionado] = useState(null);
-  
+
   useEffect(() => {
     findPlantoes();
   }, []);
@@ -16,8 +17,8 @@ const TabelaPlantoes = ({ buscarEscalados }) => {
       const result = await getPlantoes();
       setPlantoes(result.data);
     } catch (error) {
-        console.log("token inválido");
-      
+      console.log("token inválido");
+
     }
   }
 
@@ -28,8 +29,8 @@ const TabelaPlantoes = ({ buscarEscalados }) => {
   }
 
   return (
-    <div className="table-plantoes">
-      <Table responsive>
+    <>
+      <Table responsive striped bordered hover>
         <thead>
           <tr>
             <th>Horário</th>
@@ -46,13 +47,14 @@ const TabelaPlantoes = ({ buscarEscalados }) => {
               <td>{plantao.horario}</td>
               <td>{plantao.dia}</td>
               <td>
-                <button onClick={() => selecionarPlantao(plantao)}>Listar</button>
+                {/* <button onClick={() => selecionarPlantao(plantao)}>Listar</button> */}
+                <Button onClick={() => selecionarPlantao(plantao)} variant="info">Listar</Button>
               </td>
             </tr>
           ))}
         </tbody>
       </Table>
-    </div>
+    </>
   );
 };
 

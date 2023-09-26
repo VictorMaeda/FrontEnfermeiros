@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import ModalPlantao from './ModalPlantao';
 import './Escalados.css';
 import { getPlantaoEscalados, deleteEnfermeiroEscalado } from '../services/PlantaoService';
+import { TrashSimple } from '@phosphor-icons/react';
 
 const Escalados = ({ plantao }) => {
   const [show, setShow] = useState(false);
@@ -38,46 +39,54 @@ const Escalados = ({ plantao }) => {
   }, [plantao]);
 
   return (
-    <div className='rectangle'>
-      <h1>Escalados</h1>
-      {plantao !== null ? (<div className='plantaoAtivo'>
-        <div className='plantaoDataHora'>
-          <h6>{plantao.dia}</h6>
-          <h6>{plantao.horario}</h6>
+    <div className='rectangle pt-3 pb-3 pe-2 ps-2'>
+      <div className='container-fluid'>
+        <div className='row'>
+          <div className='col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12'>
+            <h4 className='mb-3'>Escalados {plantao !== null ? `${plantao.dia} - ${plantao.horario}` : ''}</h4>
+
+            <div className='table-responsive box-table'>
+              <table className='tabelaEscalados'>
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Coren</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {listaEscalados.map((enfermeiro) => (
+                    <tr key={enfermeiro.enfermeiro.idEnfermeiro}>
+                      <td>{enfermeiro.enfermeiro.nome}</td>
+                      <td>{enfermeiro.enfermeiro.coren}</td>
+                      <td>
+                        <button
+                          onClick={() => deletarEnfermeiro(enfermeiro.enfermeiro.idEnfermeiro)}
+                          className='excluirEscalado'
+                          style={{ justifyContent: 'center' }}
+                        >
+                          <TrashSimple size={22} color='red' />
+                        </button>
+
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {plantao !== null ? (
+            <div className='text-end mt-5'>
+              <Button variant="primary" onClick={handleShow}>
+                Adicionar
+              </Button>
+            </div>): ''}
+
+
+          </div>
         </div>
-        <Button variant="primary" onClick={handleShow}>
-          Adicionar
-        </Button>
       </div>
-      ) : null}
-      <div>
-      <table className='tabelaEscalados'>
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Coren</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {listaEscalados.map((enfermeiro) => (
-            <tr key={enfermeiro.enfermeiro.idEnfermeiro}>
-              <td>{enfermeiro.enfermeiro.nome}</td>
-              <td>{enfermeiro.enfermeiro.coren}</td>
-              <td>
-                <button
-                  onClick={() => deletarEnfermeiro(enfermeiro.enfermeiro.idEnfermeiro)}
-                  className='excluirEscalado'
-                  style={{ justifyContent: 'center' }}
-                >
-                  <h5>X</h5>
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      </div>
+
       <ModalPlantao show={show} handleShow={handleShow} handleClose={handleClose}
         plantao={plantao} atualizarLista={atualizarLista} />
     </div>

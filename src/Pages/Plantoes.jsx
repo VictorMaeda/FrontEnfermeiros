@@ -12,7 +12,7 @@ const Plantoes = () => {
   const [listaEscalados, setEscalados] = useState([]);
   const [idPlantao, setIdPlantao] = useState(null);
   const [dataHoraPlantao, setDataHoraPlantao] = useState("");
-  const[plantao, setPlantao] = useState(null);
+  const [plantao, setPlantao] = useState(null);
 
   async function buscarEscalados(plantao) {
     try {
@@ -40,14 +40,17 @@ const Plantoes = () => {
   return (
     <div>
       <ColorSchemesExample />
-      <div className="content-container">
-        <div className='tabela'>
-          {/* Passe a função buscarEscalados como uma propriedade */}
-          <TabelaPlantoes buscarEscalados={buscarEscalados} setDataHoraPlantao={setDataHoraPlantao}/>
+      <div className='container-fluid'>
+        <div className='row'>
+          <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 mb-3'>
+            {/* Passe a função buscarEscalados como uma propriedade */}
+            <TabelaPlantoes buscarEscalados={buscarEscalados} setDataHoraPlantao={setDataHoraPlantao} />
+          </div>
+          <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 mb-3'>
+            <Escalados lista={listaEscalados} deletarEscalado={deletarEscalado}
+              plantao={plantao} modal={ModalPlantao} />
+          </div>
         </div>
-        <Escalados lista={listaEscalados} deletarEscalado={deletarEscalado}
-         plantao={plantao} modal={ModalPlantao}/>
-        
       </div>
     </div>
   );

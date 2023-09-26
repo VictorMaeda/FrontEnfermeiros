@@ -3,16 +3,17 @@ body{
     align-items: center;
 }
 .rectangle {
-    width: 400px; /* Largura do retângulo */
-    height: 600px; /* Altura do retângulo */
+    width: 100%; /* Largura do retângulo */
+    height: 100%; /* Altura do retângulo */
     background-color: #68FFA6; /* Cor de fundo do retângulo */
     margin-left: auto; /* Alinha o retângulo à direita */
+    border-radius: 20px;
   }
 /* Escalados.css */
 
 .tabelaEscalados {
-    width: 80%;
-    border-collapse: collapse;
+    width: 100%;
+    border-collapse: collapse;/*  */
     margin: 0 auto; /* Centraliza a tabela horizontalmente */
   }
   
@@ -42,9 +43,11 @@ body{
   
   /* Estilize outros elementos da tabela conforme necessário */
   .excluirEscalado{
-    width: 25px;
-    height: 25px;
-    border-radius: 8px;
     border: none;
-    background-color: red;
+    background-color: transparent;
+  }
+
+  .box-table{
+    max-height: 600px;
+    overflow-y: auto;
   }
