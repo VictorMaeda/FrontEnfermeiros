@@ -37,9 +37,38 @@ const Plantoes = () => {
     }
   }
 
+  const [value, onChange] = useState(new Date());
+
   return (
     <div>
       <ColorSchemesExample />
+
+      <div className='container-fluid'>
+        <div className='row'>
+          <div className='col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mb-3'>
+            <div className="mb-3 text-start">
+              <label className="form-label">Data</label>
+              <input type='date' className='form-control' />
+            </div>
+          </div>
+          <div className='col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mb-3'>
+            <div className="mb-3 text-start">
+              <label className="form-label">Horário</label>
+              <select className='form-control'>
+                <option value="8">8:00</option>
+                <option value="16">16:00</option>
+                <option value="00">00:00</option>
+              </select>
+            </div>
+          </div>
+          <div className='col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mb-3 text-end'>
+            <button className='btn btn-success'>Salvar</button>
+          </div>
+        </div>
+      </div>
+
+
+
       <div className='container-fluid'>
         <div className='row'>
           <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 mb-3'>

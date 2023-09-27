@@ -44,15 +44,12 @@ const Grafico = () => {
   }, []);
 
   return (
-    <div className='GraficoBarras'>
-      <h1>Olá</h1>
-      <Chart
-        chartType="ComboChart"
-        width="80%"
-        data={dataSemana}
-        options={options}
-      />
-    </div>
+    <Chart
+      chartType="ComboChart"
+      width="100%"
+      data={dataSemana}
+      options={options}
+    />
   );
 }
 

@@ -39,13 +39,6 @@ const TabelaPlantoes = ({ buscarEscalados }) => {
           </tr>
         </thead>
         <tbody>
-          <td><select name="" id="">
-            <option value="0:00">0:00</option>
-            <option value="8:00">8:00</option>
-            <option value="16:00">16:00</option>
-            </select></td>
-          <td><input type="text" /></td>
-          <td><input /></td>
           {listaPlantoes.map((plantao) => (
             
             <tr
