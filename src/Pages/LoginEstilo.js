@@ -1,4 +1,12 @@
 import styled from "styled-components";
+
+const breakpoints = {
+  small: "576px",
+  medium: "768px",
+  large: "992px",
+  xlarge: "1200px",
+};
+
 // const show = keyframes`
 //   0%, 49.99% {
 // 		opacity: 0;

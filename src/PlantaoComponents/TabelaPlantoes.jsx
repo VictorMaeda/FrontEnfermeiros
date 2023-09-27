@@ -39,6 +39,7 @@ const TabelaPlantoes = ({ buscarEscalados }) => {
           </tr>
         </thead>
         <tbody>
+          
           {listaPlantoes.map((plantao) => (
             
             <tr

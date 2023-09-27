@@ -6,6 +6,7 @@ import Escalados from '../PlantaoComponents/Escalados';
 import TabelaPlantoes from '../PlantaoComponents/TabelaPlantoes';
 import ModalPlantao from '../PlantaoComponents/ModalPlantao';
 import { sessionValidate } from '../services/UserService';
+import ModalCadastroPlantao from '../PlantaoComponents/ModalCadastroPlantao';
 
 const Plantoes = () => {
   //sessionValidate();
@@ -13,6 +14,7 @@ const Plantoes = () => {
   const [idPlantao, setIdPlantao] = useState(null);
   const [dataHoraPlantao, setDataHoraPlantao] = useState("");
   const [plantao, setPlantao] = useState(null);
+  const [showModalPlantoes, setshowModalPlantoes] = useState(false);
 
   async function buscarEscalados(plantao) {
     try {
@@ -37,35 +39,10 @@ const Plantoes = () => {
     }
   }
 
-  const [value, onChange] = useState(new Date());
-
   return (
     <div>
       <ColorSchemesExample />
 
-      <div className='container-fluid'>
-        <div className='row'>
-          <div className='col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mb-3'>
-            <div className="mb-3 text-start">
-              <label className="form-label">Data</label>
-              <input type='date' className='form-control' />
-            </div>
-          </div>
-          <div className='col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mb-3'>
-            <div className="mb-3 text-start">
-              <label className="form-label">Horário</label>
-              <select className='form-control'>
-                <option value="8">8:00</option>
-                <option value="16">16:00</option>
-                <option value="00">00:00</option>
-              </select>
-            </div>
-          </div>
-          <div className='col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mb-3 text-end'>
-            <button className='btn btn-success'>Salvar</button>
-          </div>
-        </div>
-      </div>
 
 
 
@@ -73,7 +50,11 @@ const Plantoes = () => {
         <div className='row'>
           <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 mb-3'>
             {/* Passe a função buscarEscalados como uma propriedade */}
-            <h3>Plantões</h3>
+            <div className='TituloPlantao'>
+              <h3>Plantões</h3>
+              <button onClick={() => setshowModalPlantoes(true)} className='btn btn-primary'>
+                Adicionar Plantão</button>
+            </div>
             <TabelaPlantoes buscarEscalados={buscarEscalados} setDataHoraPlantao={setDataHoraPlantao} />
           </div>
           <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 mb-3'>
@@ -82,6 +63,7 @@ const Plantoes = () => {
           </div>
         </div>
       </div>
+      <ModalCadastroPlantao show={showModalPlantoes} close={() => setshowModalPlantoes(false)} />
     </div>
   );
 }
