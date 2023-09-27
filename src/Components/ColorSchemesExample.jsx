@@ -43,6 +43,7 @@ function ColorSchemesExample() {
               <Nav.Link className='text-dark fs-5' href="/Enfermeiros">Enfermeiros</Nav.Link>
               <Nav.Link className='text-dark fs-5' href="/DashBoard">DashBoard</Nav.Link>
             </Nav>
+              <Nav.Link className='text-dark fs-7' href="/sobre">sobre</Nav.Link>
             <button onClick={() => sair(navigate)} className='botaoSair'>
               <SignOut size={28} />
             </button>

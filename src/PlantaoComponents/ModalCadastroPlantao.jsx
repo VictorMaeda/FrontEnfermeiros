@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap';
+import { cadastrarEnfermeiro } from '../services/EnfermeiroService';
 
 const ModalCadastroPlantao = ({ show, close }) => {
 
@@ -25,16 +26,20 @@ const ModalCadastroPlantao = ({ show, close }) => {
             "hora"  :   hora
         }
         try{
-            
+            cadastrarEnfermeiro(objeto);
         }catch(error){
-            
         }
 
     }
     function save(){
-       console.log(data);
-       console.log(hora);
-        
+        if(data || hora){
+            console.log("Os campos devem ser preenchidos")
+            return;
+        }
+        try{
+            salvarService(data, hora);
+        }catch(error){
+        }
        close();
     }
 

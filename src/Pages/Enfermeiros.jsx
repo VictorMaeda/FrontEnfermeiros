@@ -137,7 +137,6 @@ function Enfermeiros() {
                   <th>Nome</th>
                   <th>Enfermeiro Técnico</th>
                   <th>COREN</th>
-                  <th>Plantoes</th>
                   <th></th>
                 </tr>
               </thead>
@@ -147,9 +146,6 @@ function Enfermeiros() {
                     <td>{enfermeiro.nome}</td>
                     <td>{enfermeiro.enfermeiroTecnico}</td>
                     <td>{enfermeiro.coren}</td>
-                    <td>
-                      <button className='btn btn-info'>listar</button>
-                    </td>
                     <td><button onClick={() => handleShowPut(enfermeiro)} className='border-0 bg-transparent'>
                       <Pen size={22} />
                     </button>

@@ -4,6 +4,9 @@ export async function getPlantoes(){
     const lista = api.get("/plantao/listar");
     return lista;
 }
+export async function cadastrarEnfermeiro(objeto){
+    api.post("/plantao/cadastrar");
+}
 export async function findPlantao(id){
     const objeto = api.get(`/plantao/buscar/${id}`);
     return objeto;
@@ -11,7 +14,8 @@ export async function findPlantao(id){
 export async function getPlantaoEscalados(id){
     const lista = api.get(`/plantao/buscar/escalados/${id}`);
     return lista;
-}export async function getPlantaoNaoEscalados(id){
+}
+export async function getPlantaoNaoEscalados(id){
     const lista = api.get(`/plantao/buscar/naoEscalados/${id}`);
     return lista;
 }

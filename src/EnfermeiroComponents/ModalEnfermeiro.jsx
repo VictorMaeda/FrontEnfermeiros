@@ -74,13 +74,14 @@ const ModalEnfermeiro = ({
 
     if (idEnfermeiro) {
       try {
+        console.log(`${corenValue}`)
         const response = await atualizarEnfermeiro(idEnfermeiro, objeto);
         fetchEnfermeiros();
         handleClose();
       } catch (error) {
         if (error.response && error.response.status === 400) {
           const errorMessage = error.response.data; // Obtém a mensagem de erro do back-end
-          showValidationErrorAlert(errorMessage); // Exibe a mensagem de erro
+          showValidationErrorAlert(errorMessage);
         } else {
           console.log(error.response.data);
         }

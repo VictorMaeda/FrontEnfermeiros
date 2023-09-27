@@ -52,8 +52,8 @@ const Plantoes = () => {
             {/* Passe a função buscarEscalados como uma propriedade */}
             <div className='TituloPlantao'>
               <h3>Plantões</h3>
-              <button onClick={() => setshowModalPlantoes(true)} className='btn btn-primary'>
-                Adicionar Plantão</button>
+               <button onClick={() => setshowModalPlantoes(true)} className='btn btn-primary'>
+               Adicionar Plantão</button>
             </div>
             <TabelaPlantoes buscarEscalados={buscarEscalados} setDataHoraPlantao={setDataHoraPlantao} />
           </div>
