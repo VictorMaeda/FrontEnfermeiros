@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap';
-import { cadastrarEnfermeiro } from '../services/EnfermeiroService';
+import { cadastrarPlantao } from '../services/PlantaoService';
 
 const ModalCadastroPlantao = ({ show, close }) => {
 
@@ -22,22 +22,22 @@ const ModalCadastroPlantao = ({ show, close }) => {
     }
     async function salvarService(data, hora){
         objeto = {
-            "data"  :   data,
-            "hora"  :   hora
+            "dia"  :   data,
+            "horario"  :   hora
         }
         try{
-            cadastrarEnfermeiro(objeto);
+           await cadastrarPlantao(objeto);
         }catch(error){
         }
 
     }
-    function save(){
-        if(data || hora){
+    async function save(){
+        if(data === null || hora === null){
             console.log("Os campos devem ser preenchidos")
             return;
         }
         try{
-            salvarService(data, hora);
+           await salvarService(data, hora);
         }catch(error){
         }
        close();
@@ -64,9 +64,9 @@ const ModalCadastroPlantao = ({ show, close }) => {
                                         <label className="form-label">Horário</label>
                                         <select onChange={handleInputChange} className='form-control' id='horarioInputPlantao'>
                                             <option value="" selected disabled>Selecione</option>
-                                            <option value="8:00">8:00</option>
-                                            <option value="16:00">16:00</option>
-                                            <option value="00:00">00:00</option>
+                                            <option value="8:00:00">8:00:00</option>
+                                            <option value="16:00:00">16:00:00</option>
+                                            <option value="00:00:00">00:00:00</option>
                                         </select>
                                     </div>
                                 </div>
