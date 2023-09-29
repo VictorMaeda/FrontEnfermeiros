@@ -34,7 +34,7 @@ const Grafico = () => {
       const graficoData = [];
       graficoData.push(colunas);
       response.forEach(objeto => {
-        graficoData.push([`${objeto.data}`, objeto.enfermeiros, objeto.tecnicos, objeto.profissionais]);
+        graficoData.push([`${objeto.data}`, objeto.profissionais, objeto.tecnicos, objeto.enfermeiros]);
       });
       setDataSemana(graficoData);
       console.log(dataSemana)
