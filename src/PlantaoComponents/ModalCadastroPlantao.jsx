@@ -27,16 +27,17 @@ const ModalCadastroPlantao = ({ show, close, findPlantoes }) => {
       }
       
     async function save(){
-        if(data === null || hora === null){
+        if(data === "" || hora === ""){
             console.log("Os campos devem ser preenchidos")
             return;
         }
         const objeto = {
-            "data"  :   data,
+            "dia"  :   data,
             "horario"   :   hora
         }
+        console.log(objeto)
         try{
-           await salvarService(objeto);
+            await salvarService(objeto);
            close();
         }catch(error){
         }
@@ -63,7 +64,7 @@ const ModalCadastroPlantao = ({ show, close, findPlantoes }) => {
                                         <label className="form-label">Horário</label>
                                         <select onChange={handleInputChange} className='form-control' id='horarioInputPlantao'>
                                             <option value="" selected disabled>Selecione</option>
-                                            <option value="8:00:00">8:00:00</option>
+                                            <option value="08:00:00">8:00:00</option>
                                             <option value="16:00:00">16:00:00</option>
                                             <option value="00:00:00">00:00:00</option>
                                         </select>

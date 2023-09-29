@@ -4,7 +4,7 @@ import './TabelaPlantoes.css';
 import { getPlantoes } from '../services/PlantaoService';
 import { Button } from 'react-bootstrap';
 
-const TabelaPlantoes = ({ buscarEscalados, findPlantoes }) => {
+const TabelaPlantoes = ({ buscarEscalados, findPlantoes, listaPlantoes }) => {
   const [plantaoSelecionado, setPlantaoSelecionado] = useState(null);
 
   useEffect(() => {
