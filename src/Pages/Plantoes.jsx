@@ -20,7 +20,6 @@ const Plantoes = () => {
     try {
       setPlantao(plantao);
       sessionStorage.setItem('plantaoExibido', plantao.idPlantao);
-      sessionStorage.setItem('token', JSON.stringify("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUb2tlbkdlcmVuY2lhZG9yIiwic3ViIjoidmljdG9yQGdtYWlsLmNvbSIsImV4cCI6MTY5NTE1OTEzNH0.eXWTskQeGc9CBEhIRjqfj7eeXOjb2kN5og3cuk21RWM"));
       setIdPlantao(plantao.idPlantao);
       setDataHoraPlantao(`${plantao.dia} ${plantao.horario}`);
       const response = await getPlantaoEscalados(plantao.idPlantao);
@@ -42,8 +41,6 @@ const Plantoes = () => {
   return (
     <div>
       <ColorSchemesExample />
-
-
 
 
       <div className='container-fluid'>

@@ -11,7 +11,6 @@ const TabelaPlantoes = ({ buscarEscalados }) => {
   useEffect(() => {
     findPlantoes();
   }, []);
-
   async function findPlantoes() {
     try {
       const result = await getPlantoes();
@@ -58,5 +57,4 @@ const TabelaPlantoes = ({ buscarEscalados }) => {
     </>
   );
 };
-
 export default TabelaPlantoes;

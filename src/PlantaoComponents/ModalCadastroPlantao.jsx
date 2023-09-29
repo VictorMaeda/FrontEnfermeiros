@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';git
 import { cadastrarPlantao } from '../services/PlantaoService';
 
 const ModalCadastroPlantao = ({ show, close }) => {
@@ -20,17 +20,18 @@ const ModalCadastroPlantao = ({ show, close }) => {
         let val = event.target.value
         setData(val)
     }
-    async function salvarService(data, hora){
-        objeto = {
-            "dia"  :   data,
-            "horario"  :   hora
+    async function salvarService(data, hora) {
+        console.log("salvarService()")
+        try {
+          const resultado = await cadastrarPlantao(data, hora);
+          const lista = resultado.data;
+          console.log(lista);
+          setarPlantoes(lista);
+        } catch (error) {
+          console.error(error); 
         }
-        try{
-           await cadastrarPlantao(objeto);
-        }catch(error){
-        }
-
-    }
+      }
+      
     async function save(){
         if(data === null || hora === null){
             console.log("Os campos devem ser preenchidos")
@@ -38,9 +39,9 @@ const ModalCadastroPlantao = ({ show, close }) => {
         }
         try{
            await salvarService(data, hora);
+           close();
         }catch(error){
         }
-       close();
     }
 
     return (
