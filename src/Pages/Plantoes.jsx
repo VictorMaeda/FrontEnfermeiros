@@ -15,6 +15,7 @@ const Plantoes = () => {
   const [dataHoraPlantao, setDataHoraPlantao] = useState("");
   const [plantao, setPlantao] = useState(null);
   const [showModalPlantoes, setshowModalPlantoes] = useState(false);
+  const [listaPlantoes, setPlantoes] = useState([]);
 
   async function buscarEscalados(plantao) {
     try {
@@ -28,7 +29,16 @@ const Plantoes = () => {
       console.log(error);
     }
   }
+  
+  async function findPlantoes() {
+    try {
+      const result = await getPlantoes();
+      setPlantoes(result.data);
+    } catch (error) {
+      console.log("token inválido");
 
+    }
+  }
   async function deletarEscalado(idEnfermeiro) {
     try {
       const response = await deleteEnfermeiroEscalado(idPlantao, idEnfermeiro); // Usa idPlantao do estado
@@ -52,7 +62,7 @@ const Plantoes = () => {
                <button onClick={() => setshowModalPlantoes(true)} className='btn btn-primary'>
                Adicionar Plantão</button>
             </div>
-            <TabelaPlantoes buscarEscalados={buscarEscalados} setDataHoraPlantao={setDataHoraPlantao} />
+            <TabelaPlantoes buscarEscalados={buscarEscalados} setDataHoraPlantao={setDataHoraPlantao} findPlantoes={findPlantoes}/>
           </div>
           <div className='col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 mb-3'>
             <Escalados lista={listaEscalados} deletarEscalado={deletarEscalado}
@@ -60,7 +70,7 @@ const Plantoes = () => {
           </div>
         </div>
       </div>
-      <ModalCadastroPlantao show={showModalPlantoes} close={() => setshowModalPlantoes(false)} />
+      <ModalCadastroPlantao show={showModalPlantoes} close={() => setshowModalPlantoes(false)} findPlantoes={findPlantoes}/>
     </div>
   );
 }

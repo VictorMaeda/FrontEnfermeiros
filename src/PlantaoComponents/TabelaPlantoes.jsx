@@ -4,22 +4,12 @@ import './TabelaPlantoes.css';
 import { getPlantoes } from '../services/PlantaoService';
 import { Button } from 'react-bootstrap';
 
-const TabelaPlantoes = ({ buscarEscalados }) => {
-  const [listaPlantoes, setPlantoes] = useState([]);
+const TabelaPlantoes = ({ buscarEscalados, findPlantoes }) => {
   const [plantaoSelecionado, setPlantaoSelecionado] = useState(null);
 
   useEffect(() => {
     findPlantoes();
   }, []);
-  async function findPlantoes() {
-    try {
-      const result = await getPlantoes();
-      setPlantoes(result.data);
-    } catch (error) {
-      console.log("token inválido");
-
-    }
-  }
 
   async function selecionarPlantao(plantao) {
     setPlantaoSelecionado(plantao);

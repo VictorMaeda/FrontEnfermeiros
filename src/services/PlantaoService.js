@@ -4,11 +4,8 @@ export async function getPlantoes(){
     const lista = api.get("/plantao/listar");
     return lista;
 }
-export async function cadastrarPlantao(data, hora){
-    return api.post("/plantao/cadastrar", {
-        "data"  : data,
-        "horario"   :   hora
-    });
+export async function cadastrarPlantao(objeto){
+    return api.post("/plantao/cadastrar", objeto);
 }
 export async function findPlantao(id){
     const objeto = api.get(`/plantao/buscar/${id}`);
